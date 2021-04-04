@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+	<id>roskassa</id>
+	<name>RosKassa</name>
+	<copyright>roskassa.net</copyright>
+	<authorEmail>cmsmodulhome@gmail.com</authorEmail>
+	<version>1.0</version>
+	<description>RosKassa позволяет принимать платежи всеми возможными способами по всему миру!</description>
+	<priority>1</priority>
+	<dependencies></dependencies>
+	<queries>
+		<item for="install">
+			INSERT INTO `?:payment_processors` (`processor_id`, `processor`, `processor_script`, `processor_template`, `admin_template`, `callback`, `type`) VALUES 
+			('', 'RosKassa', 'roskassa.php', 'views/orders/components/payments/cc_outside.tpl', 'roskassa.tpl', 'N', 'P')
+		</item>
+		<item for="uninstall">
+			DELETE FROM ?:payment_processors WHERE processor = 'RosKassa'
+		</item>
+	</queries>
+	
+	<default_language>ru</default_language>
+    <language_variables>
+		<item lang="ru" id="roskassa_url">URL мерчанта</item>
+		<item lang="ru" id="roskassa_id">ID магазина</item>
+		<item lang="ru" id="roskassa_secret_key">Первый секретный ключ</item>
+		<item lang="ru" id="roskassa_currency">Валюта магазина</item>
+		<item lang="ru" id="roskassa_pathlog">Путь до файла для журнала оплат через RosKassa (например, /roskassa_orders.log)</item>
+		<item lang="ru" id="roskassa_emailerr">Email для ошибок</item>
+		<item lang="ru" id="roskassa_mail_subject">Ошибка оплаты</item>
+		<item lang="ru" id="roskassa_mail_msg1">Не удалось провести платёж через систему RosKassa по следующим причинам</item>
+		<item lang="ru" id="roskassa_mail_msg2"> - не совпадают цифровые подписи</item>
+		<item lang="ru" id="roskassa_mail_msg3"> - статус платежа не является success</item>
+		<item lang="ru" id="roskassa_mail_msg7"> - неправильная сумма</item>
+        <item lang="en" id="roskassa_url">The URL of the merchant</item>
+		<item lang="en" id="roskassa_id">ID store</item>
+		<item lang="en" id="roskassa_secret_key">First secret key</item>
+		<item lang="en" id="roskassa_currency">Currency</item>
+		<item lang="en" id="roskassa_pathlog">Path to file to log payments through RosKassa (for example, /roskassa_orders.log)</item>
+		<item lang="en" id="roskassa_emailerr">Email error</item>
+		<item lang="en" id="roskassa_mail_subject">Payment error</item>
+		<item lang="en" id="roskassa_mail_msg1">Failed to make the payment through the system RosKassa for the following reasons</item>
+		<item lang="en" id="roskassa_mail_msg2"> - do Not match the digital signature</item>
+		<item lang="en" id="roskassa_mail_msg3"> - the payment Status is not success</item>
+		<item lang="en" id="roskassa_mail_msg7"> - wrong amount</item>
+    </language_variables>
+</addon>
